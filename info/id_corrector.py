@@ -49,7 +49,7 @@ def reindex_polity_questions():
         for question in questions_list:
             # Generate the new ID using the specified schema
             # Using f-string formatting to add leading zeros (e.g., 001, 002, ... 100)
-            new_id = f"ENVI-{year}-{global_id_counter:03}"
+            new_id = f"IR & CUR AFF-{year}-{global_id_counter:03}"
             
             # Update the 'id' field in the question dictionary
             question['id'] = new_id

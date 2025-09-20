@@ -1,0 +1,434 @@
+{
+  "subject": "Medieval India",
+  "years": {
+    "2025": [
+      {
+        "id": "POL-2025-01",
+        "question": "The irrigation device called 'Araghatta' was",
+        "options": [
+          "A. A water bag made of leather pulled over a pulley",
+          "B. A large wheel with earthen pots tied to the outer ends of its spokes",
+          "C. A larger earthen pot driven by bullocks",
+          "D. A large water bucket pulled up by rope directly by hand"
+        ],
+        "answer": "B",
+        "explanation": "The 'Araghatta', often referred to as the Persian wheel, was a mechanical water-lifting device used for irrigation. It consisted of a large wheel, often turned by animal power, with a series of pots or buckets attached to its rim to lift water from a well or other water source.",
+        "difficulty": "E"
+      },
+      {
+        "id": "POL-2025-02",
+        "question": "Who among the following led a successful military campaign against the kingdom of Srivijaya, the powerful maritime State, which ruled the Malay Peninsula, Sumatra, Java and the neighbouring islands?",
+        "options": [
+          "A. Amoghavarsha (Rashtrakuta)",
+          "B. Prataparudra (Kakatiya)",
+          "C. Rajendra I (Chola)",
+          "D. Vishnuvardhana (Hoysala)"
+        ],
+        "answer": "C",
+        "explanation": "Rajendra I, the powerful Chola emperor, launched a major naval expedition in 1025 CE against the Srivijaya kingdom. This campaign was a success, leading to the conquest of several strategic locations and asserting Chola dominance over the maritime trade routes in Southeast Asia.",
+        "difficulty": "E"
+      },
+      {
+        "id": "POL-2025-03",
+        "question": "Consider the following fruits:\nI. Papaya\nII. Pineapple\nIII. Guava\nHow many of the above were introduced in India by the Portuguese in the sixteenth and seventeenth centuries?",
+        "options": [
+          "A. Only one",
+          "B. Only two",
+          "C. All the three",
+          "D. None"
+        ],
+        "answer": "C",
+        "explanation": "All three fruits mentioned—Papaya, Pineapple, and Guava—are native to the Americas. They were introduced to India by the Portuguese during the 16th and 17th centuries as part of the Columbian exchange, which saw the transfer of plants, animals, and technology between the Old World and the New World.",
+        "difficulty": "M"
+      }
+    ],
+    "2024": [
+      {
+        "id": "POL-2024-01",
+        "question": "Who of the following rulers of medieval India gave permission to the Portuguese to build a fort at Bhatkal?",
+        "options": [
+          "A. Krishnadevaraya",
+          "B. Narasimha Saluva",
+          "C. Muhammad Shah III",
+          "D. Yusuf Adil Shah"
+        ],
+        "answer": "A",
+        "explanation": "Krishnadevaraya, the eminent emperor of the Vijayanagara Empire, maintained a strategic and friendly relationship with the Portuguese. He granted them permission to build a fort at Bhatkal in exchange for exclusive rights to the supply of warhorses, which were crucial for his military.",
+        "difficulty": "M"
+      }
+    ],
+    "2023": [
+      {
+        "id": "POL-2023-01",
+        "question": "Who among the following rulers of mediaeval Gujarat surrendered Diu to the Portuguese?",
+        "options": [
+          "A. Ahmad Shah",
+          "B. Mahmud Begarha",
+          "C. Bahadur Shah",
+          "D. Muhammad Shah"
+        ],
+        "answer": "C",
+        "explanation": "Bahadur Shah, the Sultan of Gujarat, was facing a threat from the Mughal emperor Humayun. To secure Portuguese support, he signed the Treaty of Bassein in 1534, ceding Diu to them and allowing them to construct a fort. This act effectively surrendered Diu to Portuguese control.",
+        "difficulty": "M"
+      }
+    ],
+    "2022": [
+      {
+        "id": "POL-2022-01",
+        "question": "Consider the following pairs:\n|  | King |  | Dynasty |\n| --- | --- | --- | --- |\n| 1. | Nannuka | - | Chandela |\n| 2. | Jayashakti | - | Paramara |\n| 3. | Nagabhata II | - | Gurjara-Pratihara |\n| 4. | Bhoja | - | Rashtrakuta |\n\nHow many pairs given above are correctly matched?",
+        "options": [
+          "A. Only one pair",
+          "B. Only two pairs",
+          "C. Only three pairs",
+          "D. All four pairs"
+        ],
+        "answer": "B",
+        "explanation": "Pair 1 is correct: Nannuka was the founder of the Chandela dynasty.\nPair 2 is incorrect: Jayashakti was a Chandela ruler, not a Paramara. The founder of the Paramara dynasty was Upendra (Krishnaraja).\nPair 3 is correct: Nagabhata II was a powerful king of the Gurjara-Pratihara dynasty.\nPair 4 is incorrect: The famous king Bhoja belonged to the Paramara dynasty, not the Rashtrakuta dynasty.\nThus, only two pairs are correctly matched.",
+        "difficulty": "M"
+      },
+      {
+        "id": "POL-2022-02",
+        "question": "In medieval India, the term \"Fanam\" referred to:",
+        "options": [
+          "A. Clothing",
+          "B. Coins",
+          "C. Ornaments",
+          "D. Weapons"
+        ],
+        "answer": "B",
+        "explanation": "The 'Fanam' was a small denomination coin, typically made of gold or silver, that was in circulation in various parts of Southern India during the medieval period. It was one of the smallest coins in the world and was used for everyday transactions.",
+        "difficulty": "M"
+      },
+      {
+        "id": "POL-2022-03",
+        "question": "With reference to Indian history, consider the following statements:\n1. The first Mongol invasion of India happened during the reign of Jalal-ud-din Khalji.\n2. During the reign of Ala-ud-din Khalji, one Mongol assault marched up to Delhi and besieged the city.\n3. Muhammad-bin-Tughlaq temporarily lost portions of north-west of his kingdom to Mongola.\nWhich of the statements given above is/are correct?",
+        "options": [
+          "A. 1 and 2",
+          "B. 2 only",
+          "C. 1 and 3",
+          "D. 3 only"
+        ],
+        "answer": "B",
+        "explanation": "Statement 1 is incorrect. The Mongols first appeared on the borders of India during the reign of Iltutmish (1221), long before the Khaljis.\nStatement 2 is correct. During Alauddin Khalji's reign, the Mongols under Taraghai laid a siege on Delhi in 1303, which was a serious threat to the Sultanate.\nStatement 3 is incorrect. The Mongols under Tarmashirin invaded during Muhammad-bin-Tughlaq's reign but were defeated. He did not lose territory to them.",
+        "difficulty": "H"
+      },
+      {
+        "id": "POL-2022-04",
+        "question": "With reference to Indian history, who of the following were known as \"Kulah-Daran\"?",
+        "options": [
+          "A. Arab merchants",
+          "B. Qalandars",
+          "C. Persian calligraphists",
+          "D. Sayyids"
+        ],
+        "answer": "D",
+        "explanation": "The term 'Kulah-Daran' literally means 'cap-wearers'. In the Delhi Sultanate, this term was used to refer to the Sayyids, who claimed descent from the Prophet Muhammad. They were distinguished by the pointed cap (kulah) that they wore and were held in high esteem.",
+        "difficulty": "H"
+      }
+    ],
+    "2021": [
+      {
+        "id": "POL-2021-01",
+        "question": "With reference to medieval India, which one of the following is the correct sequence in ascending order in terms of size?",
+        "options": [
+          "A. Paragana-Sarkar-Suba",
+          "B. Sarkar-Paragana-Suba",
+          "C. Suba-Sarkar-Paragana",
+          "D. Paragana-Suba-Sarkar"
+        ],
+        "answer": "A",
+        "explanation": "In the administrative structure of the Mughal Empire:\n'Paragana' was a group of villages.\n'Sarkar' was a subdivision of a Suba, comprising several Paraganas.\n'Suba' was a province, the largest administrative unit.\nTherefore, the correct ascending order of size is Paragana, then Sarkar, then Suba.",
+        "difficulty": "E"
+      },
+      {
+        "id": "POL-2021-02",
+        "question": "According to the Portuguese writer Nuniz, the women in Vijayanagara Empire were expert in which of the following areas?\nWrestling\nAstrology\nAccounting\nSoothsaying\nSelect the correct answer using the code given below.",
+        "options": [
+          "A. 1, 2 and 3 only",
+          "B. 1, 3 and 4 only",
+          "C. 2 and 4 only",
+          "D. 1, 2, 3 and 4"
+        ],
+        "answer": "D",
+        "explanation": "The Portuguese traveller Fernao Nuniz, who visited the Vijayanagara Empire in the 16th century, recorded in his chronicles that women were employed in a wide range of professions. He specifically mentioned that women served the king as wrestlers, astrologers, accountants, and soothsayers.",
+        "difficulty": "H"
+      },
+      {
+        "id": "POL-2021-03",
+        "question": "Consider the following statements:\nIt was during the reign of Iltutmish that Chengiz Khan reached the Indus in pursuit of the fugitive Khwarezm prince.\nIt was during the reign of Muhammad-bin-Tughluq that Taimur occupied Multan and crossed the Indus.\nIt was during the reign of Deva Raya II of Vijayanagara Empire that Vasco da Gama reached the coast of Kerala.\nWhich of the statements given above is/are correct?",
+        "options": [
+          "A. 1 only",
+          "B. 1 and 2 only",
+          "C. 3 only",
+          "D. 2 and 3 only"
+        ],
+        "answer": "A",
+        "explanation": "Statement 1 is correct. In 1221, Genghis Khan reached the Indus in pursuit of the Khwarazmian prince Jalal-al-Din, during the reign of Sultan Iltutmish.\nStatement 2 is incorrect. Timur invaded India in 1398, during the reign of Nasir-ud-Din Mahmud Shah Tughluq, not Muhammad-bin-Tughluq.\nStatement 3 is incorrect. Vasco da Gama reached Kerala in 1498. The reign of Deva Raya II of Vijayanagara was from 1422 to 1446.",
+        "difficulty": "M"
+      }
+    ],
+    "2019": [
+      {
+        "id": "POL-2019-01",
+        "question": "With reference to Mughal India, what is/are the difference/differences between Jagirdar and Zamindar?\nJagirdars were holders of land assignments in lieu of judicial and police duties, whereas Zamindars were holders of revenue rights without obligation to perform any duty other than revenue collection.\nLand assignments to Jagirdars were hereditary and revenue rights of Zamindars were not hereditary.\nSelect the correct answer using the code given below.",
+        "options": [
+          "A. 1 only",
+          "B. 2 only",
+          "C. Both 1 and 2",
+          "D. Neither 1 nor 2"
+        ],
+        "answer": "D",
+        "explanation": "Statement 1 is incorrect. A Jagirdar was a state official who was given a land assignment (jagir) in lieu of a cash salary. His duties were primarily military and administrative, not judicial and police. Zamindars held hereditary rights to collect revenue but also had obligations to maintain local order.\nStatement 2 is incorrect. The land assignment to a Jagirdar (jagir) was not hereditary and was transferable. In contrast, the rights of a Zamindar were typically hereditary.",
+        "difficulty": "M"
+      },
+      {
+        "id": "POL-2019-02",
+        "question": "Consider the following statements:\nIn the revenue administration of Delhi Sultanate, the in-charge of revenue collection was known as 'Amil'.\nThe lqta system of Sultans of Delhi was an ancient indigenous institution.\nThe office of 'Mir Bakshi' came into existence during the reign of Khalji Sultans of Delhi.\nWhich of the statements given above is/are correct?",
+        "options": [
+          "A. 1 only",
+          "B. 1 and 2 only",
+          "C. 3 only",
+          "D. 1, 2 and 3"
+        ],
+        "answer": "A",
+        "explanation": "Statement 1 is correct. The 'Amil' was a key revenue official at the district (shiq) level in the Delhi Sultanate.\nStatement 2 is incorrect. The Iqta system was not an indigenous institution but was introduced by the Turkish Sultans, having its origins in the wider Islamic world.\nStatement 3 is incorrect. The office of 'Mir Bakshi' as the head of the military department was an institution of the Mughal Empire, formally established under Akbar, not the Delhi Sultanate.",
+        "difficulty": "M"
+      },
+      {
+        "id": "POL-2019-03",
+        "question": "Consider the following statements:\nSaint Nimbarka was a contemporary of Akbar.\nSaint Kabir was greatly influenced by Shaikh Ahmad Sirhindi.\nWhich of the statements given above is/are correct?",
+        "options": [
+          "A. 1 only",
+          "B. 2 only",
+          "C. Both 1 and 2",
+          "D. Neither 1 nor 2"
+        ],
+        "answer": "D",
+        "explanation": "Statement 1 is incorrect. Saint Nimbarka is generally placed in the 13th or 14th century, while Emperor Akbar's reign was from 1556 to 1605. They were not contemporaries.\nStatement 2 is incorrect. Saint Kabir lived in the 15th century (c. 1440-1518), whereas Shaikh Ahmad Sirhindi lived much later (1564-1624). Therefore, Kabir could not have been influenced by him.",
+        "difficulty": "H"
+      },
+      {
+        "id": "POL-2019-04",
+        "question": "With reference to Mian Tansen, which one of the following statements is not correct?",
+        "options": [
+          "A. Tansen was the title given to him by Emperor Akbar.",
+          "B. Tansen composed Dhrupads on Hindu gods and goddesses.",
+          "C. Tansen composed songs on his patrons.",
+          "D. Tansen invented many Ragas."
+        ],
+        "answer": "A",
+        "explanation": "Statement A is not correct. Tansen's birth name was Ramtanu Pandey. The title 'Tansen' was conferred upon him by Raja Vikramjit of Gwalior. Emperor Akbar gave him the prefix 'Mian'.\nStatements B, C, and D are correct. Tansen was a master of the Dhrupad style, composed songs on both Hindu deities and his patrons, and is credited with creating several famous Ragas.",
+        "difficulty": "M"
+      },
+      {
+        "id": "POL-2019-05",
+        "question": "Who among the following Mughal Emperors shifted emphasis from illustrated manuscripts to album and individual portrait?",
+        "options": [
+          "A. Humayun",
+          "B. Akbar",
+          "C. Jahangir",
+          "D. Shah Jahan"
+        ],
+        "answer": "C",
+        "explanation": "While manuscript illustration flourished under Akbar, his son Jahangir had a deep personal interest in painting, particularly in naturalistic portraits of individuals, birds, and animals. He encouraged his artists to focus on individual portraits and assembled them into elaborate albums (muraqqas), marking a distinct shift in artistic focus.",
+        "difficulty": "E"
+      }
+    ],
+    "2018": [
+      {
+        "id": "POL-2018-01",
+        "question": "Which one of the following foreign travellers elaborately discussed about diamonds and diamond mines of India?",
+        "options": [
+          "A. Francois Bernier",
+          "B. Jean-Baptiste Tavernier",
+          "C. Jean de Thevenot",
+          "D. Abbe Barthelemy Carre"
+        ],
+        "answer": "B",
+        "explanation": "Jean-Baptiste Tavernier was a 17th-century French gem merchant who made several voyages to India. His travelogue provides some of the most detailed and elaborate contemporary accounts of India's diamond mines, particularly those in the Golconda region, and he described many famous diamonds.",
+        "difficulty": "E"
+      }
+    ],
+    "2017": [
+      {
+        "id": "POL-2017-01",
+        "question": "Which one of the following was a very important seaport in the Kakatiya kingdom?",
+        "options": [
+          "A. Kakinada",
+          "B. Motupalli",
+          "C. Machilipatnam (Masulipatnam)",
+          "D. Nelluru"
+        ],
+        "answer": "B",
+        "explanation": "Motupalli was a major and flourishing seaport during the reign of the Kakatiya dynasty. The famous Motupalli Abhaya Sasana (inscription of assurance) issued by Kakatiya ruler Ganapati Deva guaranteed the safety and security of foreign sea-traders, highlighting the port's importance.",
+        "difficulty": "M"
+      }
+    ],
+    "2016": [
+      {
+        "id": "POL-2016-01",
+        "question": "With reference to the economic history of medieval India, the term 'Araghatta' refers to",
+        "options": [
+          "A. bonded labour",
+          "B. land grants made to military officers",
+          "C. waterwheel used in the irrigation of land",
+          "D. wasteland converted to cultivated land"
+        ],
+        "answer": "C",
+        "explanation": "The term 'Araghatta' refers to a waterwheel, also known as the Persian wheel, which was used for lifting water from a well or other sources for the purpose of irrigating land. It was a significant technological device in medieval Indian agriculture.",
+        "difficulty": "E"
+      },
+      {
+        "id": "POL-2016-02",
+        "question": "With reference to the cultural history of India, the memorizing of chronicles, dynastic histories and epic tales was the profession of who of the following?",
+        "options": [
+          "A. Shramana",
+          "B. Parivraajaka",
+          "C. Agrahaarika",
+          "D. Maagadha"
+        ],
+        "answer": "D",
+        "explanation": "'Maagadha' refers to the traditional bards or court chroniclers. Their hereditary profession was to memorize and recite genealogies, dynastic histories, and epic tales, often in the royal courts. They were the keepers of oral history. The other terms refer to ascetics (Shramana, Parivraajaka) or managers of land grants (Agrahaarika).",
+        "difficulty": "H"
+      },
+      {
+        "id": "POL-2016-03",
+        "question": "Regarding the taxation system of Krishna Deva, the ruler of Vijayanagar, consider the following statements:\nThe tax rate on land was fixed depending on the quality of the land.\nPrivate owners of workshops paid an industries tax.\nWhich of the statements given above is/are correct?",
+        "options": [
+          "A. 1 only",
+          "B. 2 only",
+          "C. Both 1 and 2",
+          "D. Neither 1 nor 2"
+        ],
+        "answer": "C",
+        "explanation": "Both statements are correct. The land revenue system under Krishnadevaraya was systematically organized, with the tax rate being determined by the fertility and type of the land.\nIn addition to land tax, the Vijayanagara state levied various other taxes, including professional or industrial taxes on artisans and private workshop owners.",
+        "difficulty": "M"
+      },
+      {
+        "id": "POL-2016-04",
+        "question": "Banjaras during the medieval period of Indian history were generally",
+        "options": [
+          "A. agriculturists",
+          "B. warriors",
+          "C. weavers",
+          "D. traders"
+        ],
+        "answer": "D",
+        "explanation": "The Banjaras were nomadic communities who played a crucial role in the medieval economy as traders and transporters. They moved in large caravans called 'tanda', transporting goods like grain, salt, and other commodities over long distances, often serving armies on the move.",
+        "difficulty": "E"
+      }
+    ],
+    "2015": [
+      {
+        "id": "POL-2015-01",
+        "question": "Consider the following pairs:\nMedieval Indian State        Present Region\nChampaka                :    Central India\nDurgara                    :    Jammu\nKuluta                      :     Malabar\nWhich of the above pairs is/are correctly matched?",
+        "options": [
+          "A. 1 and 2",
+          "B. 2 only",
+          "C. 1 and 3",
+          "D. 3 only"
+        ],
+        "answer": "B",
+        "explanation": "Pair 1 is incorrect: Champaka was the ancient name for the region of Chamba in present-day Himachal Pradesh.\nPair 2 is correct: Durgara was the ancient name for the Jammu region.\nPair 3 is incorrect: Kuluta was the ancient name for the Kullu valley in present-day Himachal Pradesh, not the Malabar coast.",
+        "difficulty": "M"
+      },
+      {
+        "id": "POL-2015-02",
+        "question": "Consider the following:\nThe arrival of Babur into India led to the\nintroduction of gunpowder in the subcontinent\nintroduction of the arch and dome in the region's architecture\nestablishment of Timurid dynasty in the region\nSelect the correct answer using the code given below:",
+        "options": [
+          "A. 1 and 2 only",
+          "B. 3 only",
+          "C. 1 and 3 only",
+          "D. 1, 2 and 3"
+        ],
+        "answer": "B",
+        "explanation": "Statement 1 is incorrect. Gunpowder was known in India before Babur, but he used it more effectively in field artillery.\nStatement 2 is incorrect. The arch and dome were introduced in Indian architecture by the Delhi Sultanate, long before Babur's arrival.\nStatement 3 is correct. Babur, a descendant of Timur, founded the Mughal Empire in India, which is also referred to as the Timurid dynasty.",
+        "difficulty": "M"
+      },
+      {
+        "id": "POL-2015-03",
+        "question": "With reference to Indian history, which of the following is/are the essential element/elements of the feudal system?\nA very strong centralized political authority and a very weak provincial or local political authority\nEmergence of administrative structure based on control and possession of land\nCreation of lord-vassal relationship between the feudal lord and his overlord\nSelect the correct answer using the code given below:",
+        "options": [
+          "A. 1 and 2 only",
+          "B. 2 and 3 only",
+          "C. 3 only",
+          "D. 1, 2 and 3"
+        ],
+        "answer": "B",
+        "explanation": "Statement 1 is incorrect. Feudalism is characterized by a decentralized political authority, not a strong centralized one.\nStatement 2 is correct. In a feudal system, land is the basis of power, and the administrative structure revolves around its control and possession.\nStatement 3 is correct. The lord-vassal relationship, with its mutual obligations of service and protection, is a cornerstone of the feudal system.",
+        "difficulty": "M"
+      },
+      {
+        "id": "POL-2015-04",
+        "question": "Who of the following founded a new city on the south bank of a tributary to river Krishna and undertook to rule his new kingdom as the agent of a deity to whom all the land south of the river Krishna was supposed to belong?",
+        "options": [
+          "A. Amoghavarsha I",
+          "B. Ballala II",
+          "C. Harihara I",
+          "D. Prataparudra II"
+        ],
+        "answer": "C",
+        "explanation": "This describes the founding of the Vijayanagara Empire. Harihara I, along with his brother Bukka, founded the city of Vijayanagara on the south bank of the Tungabhadra river (a tributary of Krishna). They ruled as agents of the deity Lord Virupaksha, to whom the kingdom was dedicated.",
+        "difficulty": "E"
+      }
+    ],
+    "2014": [
+      {
+        "id": "POL-2014-01",
+        "question": "Ibadat Khana at Fatehpur Sikri was",
+        "options": [
+          "A. the mosque for the use of Royal Family",
+          "B. Akbar's private prayer chamber",
+          "C. the hall in which Akbar held discussions with scholars of various religions",
+          "D. the room in which the nobles belonging to different religions gathered to discuss religious affairs"
+        ],
+        "answer": "C",
+        "explanation": "The Ibadat Khana (House of Worship) was built by Emperor Akbar in 1575 at Fatehpur Sikri. It was a hall where he would invite theologians, mystics, and scholars of various religions—including Islam, Hinduism, Christianity, Zoroastrianism, and Jainism—to hold philosophical and religious discussions.",
+        "difficulty": "E"
+      },
+      {
+        "id": "POL-2014-02",
+        "question": "In medieval India, the designations 'Mahattara' and 'Pattakila' were used for",
+        "options": [
+          "A. military officers",
+          "B. village headmen",
+          "C. specialists in Vedic rituals",
+          "D. chiefs of craft guilds"
+        ],
+        "answer": "B",
+        "explanation": "In the administrative system of medieval India, particularly in certain regions, the terms 'Mahattara' and 'Pattakila' were designations used for village headmen. They were important local officials responsible for village administration and revenue collection.",
+        "difficulty": "H"
+      }
+    ],
+    "2013": [
+      {
+        "id": "POL-2013-01",
+        "question": "Consider the following Bhakti Saints:\nDadu Dayal\nGuru Nanak\nTyagaraja\nWho among the above was/were preaching when the Lodi dynasty fell and Babur took over?",
+        "options": [
+          "A. 1 and 3",
+          "B. 2 only",
+          "C. 2 and 3",
+          "D. 1 and 2"
+        ],
+        "answer": "B",
+        "explanation": "The Lodi dynasty fell in 1526. Guru Nanak's lifetime (1469-1539) squarely covers this period, and he was actively preaching. Dadu Dayal (1544-1603) and Tyagaraja (1767-1847) lived and preached much later. Therefore, only Guru Nanak was a contemporary of this event.",
+        "difficulty": "M"
+      }
+    ],
+    "2012": [
+      {
+        "id": "POL-2012-01",
+        "question": "With reference to the religious history of medieval India, the Sufi mystics were known to pursue which of the following practices?\nMeditation and control of breath\nSevere ascetic exercises in a lonely place\nRecitation of holy songs to arouse a state of ecstasy in their audience\nSelect the correct answer using the codes given below:",
+        "options": [
+          "A. 1 and 2 only",
+          "B. 2 and 3 only",
+          "C. 3 only",
+          "D. 1, 2 and 3"
+        ],
+        "answer": "D",
+        "explanation": "All three practices were integral to Sufism.\n1. Sufis practiced forms of meditation (Muraqaba) and breath control (Habs-i-dam) to focus on God.\n2. Asceticism (Zuhd) and spiritual retreats (Chilla) in seclusion were common practices for self-purification.\n3. The recitation of mystical poetry and holy songs (Sama or Qawwali) was a central practice to induce a state of spiritual ecstasy (Wajd).",
+        "difficulty": "E"
+      }
+    ]
+  }
+}
