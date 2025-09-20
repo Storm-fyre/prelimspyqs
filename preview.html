@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Prelims Previous Years Questions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --muted-text: #6c757d;
+      --accent-color: #007bff;
+      --ok-color: #28a745;
+      --bad-color: #dc3545;
+      --border-color: #dee2e6;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --selection-color-dark: #0d47a1; /* Dark blue for selection outline */
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text-color);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    header {
+      background: var(--card-bg);
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      box-shadow: 0 2px 4px var(--shadow-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 960px;
+      margin: 22px auto;
+      padding: 0 16px 40px;
+    }
+    .year {
+      margin: 30px 0 15px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 5px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 16px 0;
+      box-shadow: 0 4px 8px var(--shadow-color);
+    }
+    .qid {
+      color: var(--muted-text);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .qtext {
+      white-space: pre-wrap;
+      font-size: 1.1em;
+    }
+    .opts {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+    .opt {
+      padding: 14px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: all .2s ease-in-out;
+    }
+    .opt:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 4px var(--shadow-color);
+    }
+    .opt.selected {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    }
+    .opt.correct {
+      border-color: var(--ok-color);
+      background: rgba(40, 167, 69, 0.1);
+    }
+    .opt.wrong {
+      border-color: var(--bad-color);
+      background: rgba(220, 53, 69, 0.1);
+    }
+    .qtext table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    .qtext th, .qtext td {
+      border: 1px solid var(--border-color);
+      padding: 10px 12px;
+      vertical-align: top;
+    }
+    .qtext th {
+      background: #f8f9fa;
+      text-align: left;
+      font-weight: 600;
+    }
+    .meta {
+      margin-top: 15px;
+      color: var(--muted-text);
+      font-size: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .explain {
+      margin-top: 12px;
+      display: none;
+      border-left: 4px solid var(--accent-color);
+      padding: 12px 14px;
+      color: var(--text-color);
+      background: #f8f9fa;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: baseline;
+    }
+    .pill {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 8px 12px;
+      border-radius: 50px;
+      color: var(--muted-text);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .pill:hover:not(:disabled) {
+        background-color: #e9ecef;
+    }
+    .pill:disabled {
+        cursor: not-allowed;
+        opacity: 0.65;
+    }
+    .notice {
+      color: var(--muted-text);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .toolbar > .notice {
+        margin-top: 0;
+    }
+    .years-wrap, .subjects-wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 50px;
+      border: 1px solid var(--border-color);
+      background: #f8f9fa;
+      cursor: pointer;
+    }
+    .chip input {
+      accent-color: var(--accent-color);
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .controls {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-top: 14px;
+    }
+    .small {
+      font-size: 14px;
+      color: var(--muted-text);
+    }
+    #resultsCard {
+        text-align: center;
+        border-top: 5px solid var(--accent-color);
+    }
+    .results-grid {
+        display: flex;
+        justify-content: space-around;
+        margin: 20px 0;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    .result-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        flex-grow: 1;
+        min-width: 120px;
+    }
+    .result-label {
+        font-size: 14px;
+        color: var(--muted-text);
+        margin-bottom: 5px;
+    }
+    .result-value {
+        font-size: 24px;
+        font-weight: 600;
+    }
+    .result-value.correct { color: var(--ok-color); }
+    .result-value.wrong { color: var(--bad-color); }
+    .score-display {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+    }
+    .score-fraction {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--accent-color);
+    }
+    .total-marks {
+        font-size: 24px;
+        color: var(--muted-text);
+        font-weight: 500;
+    }
+    .scaled-score {
+        font-size: 18px;
+        color: var(--muted-text);
+        margin-top: 5px;
+    }
+
+    /* --- NEW --- */
+    /* After submission, give the selected answer a very strong outline */
+    .quiz-submitted .opt.selected {
+      box-shadow: 0 0 0 3px var(--selection-color-dark);
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Prelims Previous Years Questions</h1>
+    <div class="actions">
+      <button id="submit" class="pill hidden">Submit</button>
+      <button id="reset" class="pill hidden">Reset</button>
+      <button id="quit" class="pill hidden">Quit Quiz</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div id="setup" class="card">
+      <div class="toolbar">
+        <div style="font-weight:600;">Organize questions</div>
+      </div>
+
+      <div class="controls">
+        <label class="small">View as:</label>
+        <label class="chip"><input type="radio" name="viewMode" value="year" checked> Year-wise</label>
+        <label class="chip"><input type="radio" name="viewMode" value="subject"> Subject-wise</label>
+        <label class="chip"><input type="radio" name="viewMode" value="both"> Both</label>
+
+        <div style="margin-left:12px;">
+          <button id="refreshFiles" class="pill">Refresh files</button>
+        </div>
+      </div>
+
+      <div id="selectors" style="margin-top:12px;">
+        <div id="yearPicker" class="card hidden">
+          <div class="toolbar"><div style="font-weight:600;">Choose years</div><div class="notice">Select one or more years to practice.</div></div>
+          <div id="years" class="years-wrap" style="margin-top:10px;"></div>
+        </div>
+
+        <div id="subjectPicker" class="card hidden">
+          <div class="toolbar"><div style="font-weight:600;">Choose subjects</div><div class="notice">Select one or more JSON files (subjects).</div></div>
+          <div id="subjects" class="subjects-wrap" style="margin-top:10px;"></div>
+        </div>
+
+        <div id="bothNotice" class="notice hidden" style="margin-top:10px;">When <strong>Both</strong> is selected you may pick subjects and years; the quiz will show questions grouped by subject then by year.</div>
+      </div>
+
+      <div style="margin-top: 20px; text-align: center; border-top: 1px solid var(--border-color); padding-top: 20px;">
+        <button id="start" class="pill" style="padding: 12px 28px; font-size: 1.1em; font-weight: 600; background-color: var(--accent-color); color: white; border-color: var(--accent-color);">Start Quiz</button>
+      </div>
+    </div>
+
+    <div id="resultsCard" class="card hidden">
+        <h2>Quiz Results</h2>
+        <div class="results-grid">
+          <div class="result-item">
+            <span class="result-label">Correct</span>
+            <span id="correctCount" class="result-value correct">0</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Incorrect</span>
+            <span id="incorrectCount" class="result-value wrong">0</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Unattempted</span>
+            <span id="unattemptedCount" class="result-value">0</span>
+          </div>
+        </div>
+        <div class="score-display">
+          <h3>Your Score</h3>
+          <div class="score-fraction">
+            <span id="finalScore">0.00</span>
+            <span class="total-marks">/ <span id="maxMarks">0</span></span>
+          </div>
+          <div class="scaled-score">
+            (<span id="scaledScore">0.00</span> / 200)
+          </div>
+        </div>
+      </div>
+
+    <div id="out" class="hidden"></div>
+  </div>
+
+  <script>
+    // App state
+    const startBtn = document.getElementById('start');
+    const submitBtn = document.getElementById('submit');
+    const resetBtn = document.getElementById('reset');
+    const quitBtn = document.getElementById('quit');
+    const refreshBtn = document.getElementById('refreshFiles');
+    const yearPicker = document.getElementById('yearPicker');
+    const subjectPicker = document.getElementById('subjectPicker');
+    const yearsDiv = document.getElementById('years');
+    const subjectsDiv = document.getElementById('subjects');
+    const out = document.getElementById('out');
+    const bothNotice = document.getElementById('bothNotice');
+    const resultsCard = document.getElementById('resultsCard');
+
+    let ALL_DATA = {}; // { filename: { years: { ... } } }
+    let availableYears = new Set();
+    let availableSubjects = [];
+    let userAnswers = {};
+    let submitted = false;
+
+    function escapeHtml(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function renderMarkdownTablesPreservingLines(text) {
+      const lines = (text || '').split('\n');
+      const result = [];
+      let i = 0;
+      function isSeparator(line) {
+        const parts = line.split('|').map(s => s.trim());
+        if (parts.length < 2) return false;
+        return parts.every(p => /^:?---+:?$/.test(p) || p === '');
+      }
+      function rowToCells(line, cellTag) {
+        const parts = line.split('|');
+        const cells = parts.map(s => s.trim());
+        if (cells.length > 1 && cells[0] === '' && cells[cells.length-1] === '') { cells.shift(); cells.pop(); }
+        return '<tr>' + cells.map(c => `<${cellTag}>${escapeHtml(c)}</${cellTag}>`).join('') + '</tr>';
+      }
+      while (i < lines.length) {
+        const headerLine = lines[i];
+        const sepLine = lines[i+1];
+        if (headerLine && headerLine.includes('|') && sepLine && isSeparator(sepLine)) {
+          let html = '<table><thead>';
+          html += rowToCells(headerLine, 'th') + '</thead><tbody>';
+          i += 2;
+          while (i < lines.length && lines[i].includes('|') && !/^\s*$/.test(lines[i])) { html += rowToCells(lines[i], 'td'); i++; }
+          html += '</tbody></table>';
+          result.push(html);
+          if (i < lines.length && /^\s*$/.test(lines[i])) { result.push(''); i++; }
+        } else {
+          result.push(escapeHtml(headerLine || ''));
+          i++;
+        }
+      }
+      return result.join('\n').replace(/(?<!>|\n)\n(?!<)/g, '<br>');
+    }
+
+    async function autoLoadAll() {
+      ALL_DATA = {};
+      availableYears = new Set();
+      availableSubjects = [];
+      try {
+        const res = await fetch('files.json', { cache: 'no-store' });
+        if (res.ok) {
+          const list = await res.json();
+          if (Array.isArray(list) && list.length) {
+            await Promise.all(list.map(async fname => { try { const r = await fetch(fname, {cache: 'no-store'}); if (r.ok) { ALL_DATA[fname] = await r.json(); availableSubjects.push(fname); } } catch(e){} }));
+            finalizeLoad();
+            return;
+          }
+        }
+      } catch(e) {}
+      try {
+        const r = await fetch('polity.json', { cache: 'no-store' });
+        if (r.ok) { ALL_DATA['polity.json'] = await r.json(); availableSubjects.push('polity.json'); finalizeLoad(); return; }
+      } catch(e) {}
+      finalizeLoad();
+    }
+
+    function finalizeLoad() {
+      Object.keys(ALL_DATA).forEach(fname => {
+        const data = ALL_DATA[fname];
+        const years = data && data.years ? data.years : {};
+        Object.keys(years).forEach(y => availableYears.add(y));
+      });
+      subjectsDiv.innerHTML = '';
+      availableSubjects.forEach(s => {
+        const id = 's_' + s;
+        const label = document.createElement('label');
+        label.className = 'chip';
+        label.htmlFor = id;
+        label.innerHTML = `<input type="checkbox" id="${id}" value="${s}"> ${s.replace(/\.json$/,'')}`;
+        subjectsDiv.appendChild(label);
+      });
+      const yearsArr = Array.from(availableYears).sort((a,b)=>b.localeCompare(a));
+      yearsDiv.innerHTML = '';
+      yearsArr.forEach(y => {
+        const id = 'y_' + y;
+        const label = document.createElement('label');
+        label.className = 'chip';
+        label.htmlFor = id;
+        label.innerHTML = `<input type="checkbox" id="${id}" value="${y}"> ${y}`;
+        yearsDiv.appendChild(label);
+      });
+      updateViewModeUI();
+    }
+
+    function getSelectedSubjects(){ return [...subjectsDiv.querySelectorAll('input[type="checkbox"]:checked')].map(i=>i.value); }
+    function getSelectedYears(){ return [...yearsDiv.querySelectorAll('input[type="checkbox"]:checked')].map(i=>i.value); }
+
+    function updateViewModeUI(){
+      const mode = document.querySelector('input[name="viewMode"]:checked').value;
+      if (mode === 'year') { yearPicker.classList.remove('hidden'); subjectPicker.classList.add('hidden'); bothNotice.classList.add('hidden'); }
+      else if (mode === 'subject') { yearPicker.classList.add('hidden'); subjectPicker.classList.remove('hidden'); bothNotice.classList.add('hidden'); }
+      else { yearPicker.classList.remove('hidden'); subjectPicker.classList.remove('hidden'); bothNotice.classList.remove('hidden'); }
+    }
+
+    document.querySelectorAll('input[name="viewMode"]').forEach(r => r.addEventListener('change', updateViewModeUI));
+    refreshBtn.addEventListener('click', autoLoadAll);
+
+    function renderQuiz() {
+      out.innerHTML = '';
+      userAnswers = {};
+      submitted = false;
+      const mode = document.querySelector('input[name="viewMode"]:checked').value;
+      const selSubjects = getSelectedSubjects();
+      const selYears = getSelectedYears();
+      let subjectKeys = selSubjects.length ? selSubjects : (availableSubjects.length ? availableSubjects : []);
+      if (!subjectKeys.length && mode !== 'year') {
+        subjectKeys = [];
+      }
+      if (mode === 'year' || (mode==='both' && !subjectKeys.length)) {
+        const yearsToShow = selYears.length ? selYears : Array.from(availableYears).sort((a,b)=>b.localeCompare(a));
+        yearsToShow.forEach(y => {
+          const yHead = document.createElement('div'); yHead.className = 'year'; yHead.textContent = y; out.appendChild(yHead);
+          Object.keys(ALL_DATA).forEach(fname => {
+            const years = ALL_DATA[fname] && ALL_DATA[fname].years ? ALL_DATA[fname].years : {};
+            (years[y] || []).forEach(item => appendQuestionCard(item, out));
+          });
+        });
+      }
+      if (mode === 'subject' || mode === 'both') {
+        subjectKeys.forEach(fname => {
+          const subjHead = document.createElement('div'); subjHead.className = 'year'; subjHead.textContent = fname.replace(/\.json$/,''); out.appendChild(subjHead);
+          const years = (ALL_DATA[fname] && ALL_DATA[fname].years) ? ALL_DATA[fname].years : {};
+          const yearsToProcess = Object.keys(years).sort((a,b)=>b.localeCompare(a));
+          const chosenYears = selYears.length ? selYears : yearsToProcess;
+          chosenYears.forEach(y => {
+            (years[y] || []).forEach(item => appendQuestionCard(item, out, fname, y));
+          });
+        });
+      }
+      submitBtn.classList.remove('hidden');
+      resetBtn.classList.remove('hidden');
+      quitBtn.classList.remove('hidden');
+    }
+
+    function appendQuestionCard(item, container, fname='', y=''){
+      const card = document.createElement('div'); card.className = 'card';
+      const qidDiv = document.createElement('div'); qidDiv.className = 'qid'; qidDiv.textContent = item.id || '';
+      card.appendChild(qidDiv);
+      const qtext = document.createElement('div'); qtext.className = 'qtext'; qtext.innerHTML = renderMarkdownTablesPreservingLines(item.question || '');
+      card.appendChild(qtext);
+      const optsWrap = document.createElement('div'); optsWrap.className = 'opts';
+      (item.options || []).forEach((o, idx) => {
+        const opt = document.createElement('div'); opt.className = 'opt'; opt.textContent = o || ''; opt.dataset.qid = item.id;
+        const key = ((o||'').trim().charAt(0) || '').toUpperCase(); opt.dataset.key = (['A','B','C','D'].includes(key) ? key : '');
+        opt.addEventListener('click', () => onPick(item.id, opt, optsWrap)); optsWrap.appendChild(opt);
+      });
+      card.appendChild(optsWrap);
+      const footer = document.createElement('div'); footer.className = 'meta';
+      const ansShown = (item.answer || '').toString().trim().toUpperCase(); footer.dataset.answer = ansShown;
+      const explainBtn = document.createElement('button'); explainBtn.className = 'pill hidden'; explainBtn.textContent = 'Explanation'; explainBtn.addEventListener('click', () => { expEl.style.display = (expEl.style.display === 'block' ? 'none' : 'block'); });
+      const metaLabel = document.createElement('span'); metaLabel.className = 'hidden'; metaLabel.textContent = `Answer: ${ansShown || '—'} · Difficulty: ${item.difficulty || '—'}`;
+      footer.appendChild(metaLabel); footer.appendChild(explainBtn); card.appendChild(footer);
+      const expEl = document.createElement('div'); expEl.className = 'explain'; expEl.textContent = (item.explanation && item.explanation.trim()) ? item.explanation : 'No explanation provided.'; card.appendChild(expEl);
+      container.appendChild(card);
+    }
+
+    function onPick(qid, optEl, optsWrap){ if (submitted) return; [...optsWrap.children].forEach(c=>c.classList.remove('selected')); optEl.classList.add('selected'); const key = optEl.dataset.key; if (key) userAnswers[qid] = key; }
+
+    function submitQuiz() {
+      if (submitted) return;
+      submitted = true;
+      submitBtn.disabled = true;
+      out.classList.add('quiz-submitted'); // --- NEW ---
+
+      let correct = 0;
+      let incorrect = 0;
+      const cards = out.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const qid = (card.querySelector('.qid')?.textContent || '').trim();
+        const footer = card.querySelector('.meta');
+        const answerKey = (footer?.dataset.answer || '').toUpperCase();
+        const userAnswer = userAnswers[qid] || null;
+
+        // Visual feedback
+        const options = card.querySelectorAll('.opt');
+        options.forEach(opt => {
+          const key = opt.dataset.key;
+          const picked = userAnswer === key;
+          if (answerKey && key === answerKey) opt.classList.add('correct');
+          if (picked && key !== answerKey) opt.classList.add('wrong');
+        });
+        const metaLabel = card.querySelector('.meta span');
+        if (metaLabel) metaLabel.classList.remove('hidden');
+        const explainBtn = card.querySelector('.pill');
+        if (explainBtn) explainBtn.classList.remove('hidden');
+
+        // Score calculation
+        if (userAnswer) {
+          if (userAnswer === answerKey) { correct++; } else { incorrect++; }
+        }
+      });
+
+      const totalQuestions = cards.length;
+      const unattempted = totalQuestions - correct - incorrect;
+      const marks = (correct * 2) - (incorrect * (2 / 3));
+      const maxMarks = totalQuestions * 2;
+      const scaledScore = maxMarks > 0 ? (marks / maxMarks) * 200 : 0;
+
+      // Update results card
+      document.getElementById('correctCount').textContent = correct;
+      document.getElementById('incorrectCount').textContent = incorrect;
+      document.getElementById('unattemptedCount').textContent = unattempted;
+      document.getElementById('finalScore').textContent = marks.toFixed(2);
+      document.getElementById('maxMarks').textContent = maxMarks;
+      document.getElementById('scaledScore').textContent = scaledScore.toFixed(2);
+      
+      resultsCard.classList.remove('hidden');
+      resultsCard.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetQuiz() {
+      submitted = false;
+      userAnswers = {};
+      resultsCard.classList.add('hidden');
+      submitBtn.disabled = false;
+      out.classList.remove('quiz-submitted'); // --- NEW ---
+      renderQuiz();
+    }
+
+    function quitQuiz() {
+      out.classList.add('hidden');
+      document.getElementById('setup').classList.remove('hidden');
+      submitBtn.classList.add('hidden');
+      resetBtn.classList.add('hidden');
+      quitBtn.classList.add('hidden');
+      resultsCard.classList.add('hidden');
+      submitBtn.disabled = false;
+      out.classList.remove('quiz-submitted'); // --- NEW ---
+    }
+
+    startBtn.addEventListener('click', () => {
+      const mode = document.querySelector('input[name="viewMode"]:checked').value;
+      if (mode !== 'subject' && availableYears.size === 0 && Object.keys(ALL_DATA).length === 0) { alert('No questions available to start. Ensure JSON files are present on the server or provide a files.json manifest.'); return; }
+      document.getElementById('setup').classList.add('hidden');
+      out.classList.remove('hidden');
+      renderQuiz();
+    });
+
+    submitBtn.addEventListener('click', submitQuiz);
+    resetBtn.addEventListener('click', resetQuiz);
+    quitBtn.addEventListener('click', quitQuiz);
+
+    autoLoadAll();
+  </script>
+</body>
+</html>
