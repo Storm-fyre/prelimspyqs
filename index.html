@@ -48,16 +48,6 @@
       margin: 22px auto;
       padding: 0 16px 40px;
     }
-    .year {
-      margin: 30px 0 15px;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--accent-color);
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      border-bottom: 2px solid var(--accent-color);
-      padding-bottom: 5px;
-    }
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -69,6 +59,7 @@
     .qid {
       color: var(--muted-text);
       font-size: 12px;
+      font-weight: 500;
       margin-bottom: 10px;
     }
     .qtext {
@@ -164,15 +155,7 @@
         cursor: not-allowed;
         opacity: 0.65;
     }
-    .notice {
-      color: var(--muted-text);
-      font-size: 14px;
-      margin-top: 8px;
-    }
-    .toolbar > .notice {
-        margin-top: 0;
-    }
-    .years-wrap, .subjects-wrap {
+    .filters-wrap {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
@@ -196,16 +179,6 @@
     }
     .hidden {
       display: none;
-    }
-    .controls {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      margin-top: 14px;
-    }
-    .small {
-      font-size: 14px;
-      color: var(--muted-text);
     }
     #resultsCard {
         text-align: center;
@@ -259,13 +232,46 @@
         color: var(--muted-text);
         margin-top: 5px;
     }
-
-    /* --- NEW --- */
-    /* After submission, give the selected answer a very strong outline */
     .quiz-submitted .opt.selected {
       box-shadow: 0 0 0 3px var(--selection-color-dark);
     }
-
+    #noQuestionsModal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--card-bg);
+        padding: 25px 35px;
+        border-radius: 8px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+        text-align: center;
+        border-top: 4px solid var(--accent-color);
+    }
+    #noQuestionsModal p {
+        margin: 0 0 15px;
+        font-size: 1.1em;
+    }
+    #modalCloseBtn {
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--muted-text);
+    }
+    #quizInfo {
+        font-size: 14px;
+        color: var(--muted-text);
+    }
+    #quizInfo strong {
+        color: var(--text-color);
+    }
+    #quizInfo .card {
+        padding: 15px 20px;
+    }
   </style>
 </head>
 <body>
@@ -281,39 +287,50 @@
   <div class="container">
     <div id="setup" class="card">
       <div class="toolbar">
-        <div style="font-weight:600;">Organize questions</div>
-      </div>
-
-      <div class="controls">
-        <label class="small">View as:</label>
-        <label class="chip"><input type="radio" name="viewMode" value="year" checked> Year-wise</label>
-        <label class="chip"><input type="radio" name="viewMode" value="subject"> Subject-wise</label>
-        <label class="chip"><input type="radio" name="viewMode" value="both"> Both</label>
-
-        <div style="margin-left:12px;">
-          <button id="refreshFiles" class="pill">Refresh files</button>
-        </div>
+        <div style="font-weight:600;">Filter Questions</div>
+        <button id="clearFilters" class="pill">Clear Filters</button>
+        <button id="refreshFiles" class="pill" style="margin-left:auto;">Refresh files</button>
       </div>
 
       <div id="selectors" style="margin-top:12px;">
-        <div id="yearPicker" class="card hidden">
-          <div class="toolbar"><div style="font-weight:600;">Choose years</div><div class="notice">Select one or more years to practice.</div></div>
-          <div id="years" class="years-wrap" style="margin-top:10px;"></div>
+        <div id="subjectPicker" class="card">
+          <div class="toolbar">
+            <div style="font-weight:600;">Choose subjects</div>
+            <button class="pill toggle-all-btn hidden" data-target="subjects">Select All</button>
+          </div>
+          <div id="subjects" class="filters-wrap" style="margin-top:10px;"></div>
         </div>
 
-        <div id="subjectPicker" class="card hidden">
-          <div class="toolbar"><div style="font-weight:600;">Choose subjects</div><div class="notice">Select one or more JSON files (subjects).</div></div>
-          <div id="subjects" class="subjects-wrap" style="margin-top:10px;"></div>
+        <div id="yearPicker" class="card">
+          <div class="toolbar">
+            <div style="font-weight:600;">Choose years</div>
+            <button class="pill toggle-all-btn hidden" data-target="years">Select All</button>
+          </div>
+          <div id="years" class="filters-wrap" style="margin-top:10px;"></div>
         </div>
 
-        <div id="bothNotice" class="notice hidden" style="margin-top:10px;">When <strong>Both</strong> is selected you may pick subjects and years; the quiz will show questions grouped by subject then by year.</div>
+        <div id="difficultyPicker" class="card">
+          <div class="toolbar">
+            <div style="font-weight:600;">Choose difficulty</div>
+            <button class="pill toggle-all-btn hidden" data-target="difficulties">Select All</button>
+          </div>
+          <div id="difficulties" class="filters-wrap" style="margin-top:10px;"></div>
+        </div>
       </div>
 
       <div style="margin-top: 20px; text-align: center; border-top: 1px solid var(--border-color); padding-top: 20px;">
         <button id="start" class="pill" style="padding: 12px 28px; font-size: 1.1em; font-weight: 600; background-color: var(--accent-color); color: white; border-color: var(--accent-color);">Start Quiz</button>
       </div>
     </div>
+    
+    <div id="noQuestionsModal" class="hidden">
+        <button id="modalCloseBtn">&times;</button>
+        <p>No questions found.</p>
+        <span class="small" style="font-size: 12px;">Please adjust your filters and try again.</span>
+    </div>
 
+    <div id="quizInfo" class="hidden"></div>
+    
     <div id="resultsCard" class="card hidden">
         <h2>Quiz Results</h2>
         <div class="results-grid">
@@ -352,19 +369,23 @@
     const resetBtn = document.getElementById('reset');
     const quitBtn = document.getElementById('quit');
     const refreshBtn = document.getElementById('refreshFiles');
-    const yearPicker = document.getElementById('yearPicker');
-    const subjectPicker = document.getElementById('subjectPicker');
+    const clearFiltersBtn = document.getElementById('clearFilters');
     const yearsDiv = document.getElementById('years');
     const subjectsDiv = document.getElementById('subjects');
+    const difficultiesDiv = document.getElementById('difficulties');
     const out = document.getElementById('out');
-    const bothNotice = document.getElementById('bothNotice');
     const resultsCard = document.getElementById('resultsCard');
+    const noQuestionsModal = document.getElementById('noQuestionsModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const quizInfoDiv = document.getElementById('quizInfo');
 
-    let ALL_DATA = {}; // { filename: { years: { ... } } }
-    let availableYears = new Set();
-    let availableSubjects = [];
+    let ALL_DATA = {};
+    let currentQuestions = [];
     let userAnswers = {};
     let submitted = false;
+    
+    const DIFFICULTY_MAP = { 'E': 'Easy', 'M': 'Medium', 'H': 'Hard' };
+    const DIFFICULTY_ORDER = ['E', 'M', 'H'];
 
     function escapeHtml(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
@@ -404,112 +425,134 @@
 
     async function autoLoadAll() {
       ALL_DATA = {};
-      availableYears = new Set();
-      availableSubjects = [];
+      let availableYears = new Set();
+      let availableSubjects = [];
+      let availableDifficulties = new Set();
       try {
         const res = await fetch('files.json', { cache: 'no-store' });
         if (res.ok) {
           const list = await res.json();
           if (Array.isArray(list) && list.length) {
             await Promise.all(list.map(async fname => { try { const r = await fetch(fname, {cache: 'no-store'}); if (r.ok) { ALL_DATA[fname] = await r.json(); availableSubjects.push(fname); } } catch(e){} }));
-            finalizeLoad();
+            finalizeLoad(availableSubjects, availableYears, availableDifficulties);
             return;
           }
         }
       } catch(e) {}
       try {
         const r = await fetch('polity.json', { cache: 'no-store' });
-        if (r.ok) { ALL_DATA['polity.json'] = await r.json(); availableSubjects.push('polity.json'); finalizeLoad(); return; }
+        if (r.ok) { ALL_DATA['polity.json'] = await r.json(); availableSubjects.push('polity.json'); finalizeLoad(availableSubjects, availableYears, availableDifficulties); return; }
       } catch(e) {}
-      finalizeLoad();
+      finalizeLoad(availableSubjects, availableYears, availableDifficulties);
     }
 
-    function finalizeLoad() {
+    function createChip(id, value, text) {
+        const label = document.createElement('label');
+        label.className = 'chip';
+        label.htmlFor = id;
+        label.innerHTML = `<input type="checkbox" id="${id}" value="${value}"> ${text}`;
+        return label;
+    }
+
+    function finalizeLoad(availableSubjects, availableYears, availableDifficulties) {
       Object.keys(ALL_DATA).forEach(fname => {
         const data = ALL_DATA[fname];
         const years = data && data.years ? data.years : {};
-        Object.keys(years).forEach(y => availableYears.add(y));
+        Object.keys(years).forEach(y => {
+          availableYears.add(y);
+          (years[y] || []).forEach(item => {
+            if (item.difficulty) availableDifficulties.add(item.difficulty.toUpperCase());
+          });
+        });
       });
+
       subjectsDiv.innerHTML = '';
-      availableSubjects.forEach(s => {
-        const id = 's_' + s;
-        const label = document.createElement('label');
-        label.className = 'chip';
-        label.htmlFor = id;
-        label.innerHTML = `<input type="checkbox" id="${id}" value="${s}"> ${s.replace(/\.json$/,'')}`;
-        subjectsDiv.appendChild(label);
-      });
+      availableSubjects.forEach(s => subjectsDiv.appendChild(createChip('s_' + s, s, s.replace(/\.json$/,''))));
+
       const yearsArr = Array.from(availableYears).sort((a,b)=>b.localeCompare(a));
       yearsDiv.innerHTML = '';
-      yearsArr.forEach(y => {
-        const id = 'y_' + y;
-        const label = document.createElement('label');
-        label.className = 'chip';
-        label.htmlFor = id;
-        label.innerHTML = `<input type="checkbox" id="${id}" value="${y}"> ${y}`;
-        yearsDiv.appendChild(label);
+      yearsArr.forEach(y => yearsDiv.appendChild(createChip('y_' + y, y, y)));
+
+      const diffsArr = Array.from(availableDifficulties);
+      diffsArr.sort((a, b) => DIFFICULTY_ORDER.indexOf(a) - DIFFICULTY_ORDER.indexOf(b));
+      
+      difficultiesDiv.innerHTML = '';
+      diffsArr.forEach(d_code => {
+        const d_text = DIFFICULTY_MAP[d_code] || d_code;
+        difficultiesDiv.appendChild(createChip('d_' + d_code, d_code, d_text));
       });
-      updateViewModeUI();
+      
+      setupFilterInteractions();
     }
 
-    function getSelectedSubjects(){ return [...subjectsDiv.querySelectorAll('input[type="checkbox"]:checked')].map(i=>i.value); }
-    function getSelectedYears(){ return [...yearsDiv.querySelectorAll('input[type="checkbox"]:checked')].map(i=>i.value); }
+    function getSelected(container) {
+      return [...container.querySelectorAll('input[type="checkbox"]:checked')].map(i => i.value);
+    }
+    
+    function getSelectedSubjects(){ return getSelected(subjectsDiv); }
+    function getSelectedYears(){ return getSelected(yearsDiv); }
+    function getSelectedDifficulties(){ return getSelected(difficultiesDiv); }
 
-    function updateViewModeUI(){
-      const mode = document.querySelector('input[name="viewMode"]:checked').value;
-      if (mode === 'year') { yearPicker.classList.remove('hidden'); subjectPicker.classList.add('hidden'); bothNotice.classList.add('hidden'); }
-      else if (mode === 'subject') { yearPicker.classList.add('hidden'); subjectPicker.classList.remove('hidden'); bothNotice.classList.add('hidden'); }
-      else { yearPicker.classList.remove('hidden'); subjectPicker.classList.remove('hidden'); bothNotice.classList.remove('hidden'); }
+    function setupFilterInteractions() {
+        document.querySelectorAll('.toggle-all-btn').forEach(button => {
+            const targetId = button.dataset.target;
+            const container = document.getElementById(targetId);
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+            
+            if (checkboxes.length > 1) button.classList.remove('hidden'); else button.classList.add('hidden');
+
+            button.addEventListener('click', () => {
+                const isSelectAll = button.textContent.includes('Select All');
+                checkboxes.forEach(cb => cb.checked = isSelectAll);
+                button.textContent = isSelectAll ? 'Unselect All' : 'Select All';
+            });
+        });
+        
+        clearFiltersBtn.addEventListener('click', () => {
+            document.querySelectorAll('#selectors input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.toggle-all-btn').forEach(button => button.textContent = 'Select All');
+        });
     }
 
-    document.querySelectorAll('input[name="viewMode"]').forEach(r => r.addEventListener('change', updateViewModeUI));
-    refreshBtn.addEventListener('click', autoLoadAll);
+    function getFilteredQuestions() {
+        const selSubjects = getSelectedSubjects();
+        const selYears = getSelectedYears();
+        const selDifficulties = getSelectedDifficulties();
+        const questions = [];
+        const subjectKeys = selSubjects.length ? selSubjects : Object.keys(ALL_DATA);
+        subjectKeys.forEach(fname => {
+            const years = (ALL_DATA[fname] && ALL_DATA[fname].years) ? ALL_DATA[fname].years : {};
+            const yearsToProcess = Object.keys(years);
+            const chosenYears = selYears.length ? selYears : yearsToProcess;
+            chosenYears.forEach(y => {
+                (years[y] || []).forEach(item => {
+                    const difficultyMatch = selDifficulties.length === 0 || (item.difficulty && selDifficulties.includes(item.difficulty.toUpperCase()));
+                    if (difficultyMatch) questions.push(item);
+                });
+            });
+        });
+        return questions;
+    }
 
     function renderQuiz() {
       out.innerHTML = '';
       userAnswers = {};
       submitted = false;
-      const mode = document.querySelector('input[name="viewMode"]:checked').value;
-      const selSubjects = getSelectedSubjects();
-      const selYears = getSelectedYears();
-      let subjectKeys = selSubjects.length ? selSubjects : (availableSubjects.length ? availableSubjects : []);
-      if (!subjectKeys.length && mode !== 'year') {
-        subjectKeys = [];
-      }
-      if (mode === 'year' || (mode==='both' && !subjectKeys.length)) {
-        const yearsToShow = selYears.length ? selYears : Array.from(availableYears).sort((a,b)=>b.localeCompare(a));
-        yearsToShow.forEach(y => {
-          const yHead = document.createElement('div'); yHead.className = 'year'; yHead.textContent = y; out.appendChild(yHead);
-          Object.keys(ALL_DATA).forEach(fname => {
-            const years = ALL_DATA[fname] && ALL_DATA[fname].years ? ALL_DATA[fname].years : {};
-            (years[y] || []).forEach(item => appendQuestionCard(item, out));
-          });
-        });
-      }
-      if (mode === 'subject' || mode === 'both') {
-        subjectKeys.forEach(fname => {
-          const subjHead = document.createElement('div'); subjHead.className = 'year'; subjHead.textContent = fname.replace(/\.json$/,''); out.appendChild(subjHead);
-          const years = (ALL_DATA[fname] && ALL_DATA[fname].years) ? ALL_DATA[fname].years : {};
-          const yearsToProcess = Object.keys(years).sort((a,b)=>b.localeCompare(a));
-          const chosenYears = selYears.length ? selYears : yearsToProcess;
-          chosenYears.forEach(y => {
-            (years[y] || []).forEach(item => appendQuestionCard(item, out, fname, y));
-          });
-        });
-      }
+      currentQuestions.forEach((item, index) => appendQuestionCard(item, out, index + 1));
       submitBtn.classList.remove('hidden');
       resetBtn.classList.remove('hidden');
       quitBtn.classList.remove('hidden');
     }
 
-    function appendQuestionCard(item, container, fname='', y=''){
+    function appendQuestionCard(item, container, serialNumber){
       const card = document.createElement('div'); card.className = 'card';
-      const qidDiv = document.createElement('div'); qidDiv.className = 'qid'; qidDiv.textContent = item.id || '';
+      const qidDiv = document.createElement('div'); qidDiv.className = 'qid'; 
+      qidDiv.textContent = `Question #${serialNumber}`;
       card.appendChild(qidDiv);
       const qtext = document.createElement('div'); qtext.className = 'qtext'; qtext.innerHTML = renderMarkdownTablesPreservingLines(item.question || '');
       card.appendChild(qtext);
       const optsWrap = document.createElement('div'); optsWrap.className = 'opts';
-      (item.options || []).forEach((o, idx) => {
+      (item.options || []).forEach((o) => {
         const opt = document.createElement('div'); opt.className = 'opt'; opt.textContent = o || ''; opt.dataset.qid = item.id;
         const key = ((o||'').trim().charAt(0) || '').toUpperCase(); opt.dataset.key = (['A','B','C','D'].includes(key) ? key : '');
         opt.addEventListener('click', () => onPick(item.id, opt, optsWrap)); optsWrap.appendChild(opt);
@@ -518,47 +561,71 @@
       const footer = document.createElement('div'); footer.className = 'meta';
       const ansShown = (item.answer || '').toString().trim().toUpperCase(); footer.dataset.answer = ansShown;
       const explainBtn = document.createElement('button'); explainBtn.className = 'pill hidden'; explainBtn.textContent = 'Explanation'; explainBtn.addEventListener('click', () => { expEl.style.display = (expEl.style.display === 'block' ? 'none' : 'block'); });
-      const metaLabel = document.createElement('span'); metaLabel.className = 'hidden'; metaLabel.textContent = `Answer: ${ansShown || '—'} · Difficulty: ${item.difficulty || '—'}`;
+      const metaLabel = document.createElement('span'); metaLabel.className = 'hidden'; 
+      const difficultyText = (item.difficulty && DIFFICULTY_MAP[item.difficulty.toUpperCase()]) ? DIFFICULTY_MAP[item.difficulty.toUpperCase()] : (item.difficulty || '—');
+      metaLabel.textContent = `Answer: ${ansShown || '—'} · Difficulty: ${difficultyText}`;
       footer.appendChild(metaLabel); footer.appendChild(explainBtn); card.appendChild(footer);
       const expEl = document.createElement('div'); expEl.className = 'explain'; expEl.textContent = (item.explanation && item.explanation.trim()) ? item.explanation : 'No explanation provided.'; card.appendChild(expEl);
       container.appendChild(card);
     }
 
-    function onPick(qid, optEl, optsWrap){ if (submitted) return; [...optsWrap.children].forEach(c=>c.classList.remove('selected')); optEl.classList.add('selected'); const key = optEl.dataset.key; if (key) userAnswers[qid] = key; }
+    // NEW: Updated onPick function to allow toggling/deselection
+    function onPick(qid, optEl, optsWrap){
+        if (submitted) return;
+        const wasSelected = optEl.classList.contains('selected');
+        [...optsWrap.children].forEach(c => c.classList.remove('selected')); // Clear all first
+        
+        if (wasSelected) {
+            // It was selected, so now it's deselected. Remove the answer.
+            if (qid) delete userAnswers[qid];
+        } else {
+            // It was not selected, so now we select it.
+            optEl.classList.add('selected');
+            const key = optEl.dataset.key;
+            if (key && qid) userAnswers[qid] = key;
+        }
+    }
 
     function submitQuiz() {
       if (submitted) return;
       submitted = true;
       submitBtn.disabled = true;
-      out.classList.add('quiz-submitted'); // --- NEW ---
+      out.classList.add('quiz-submitted');
 
       let correct = 0;
       let incorrect = 0;
       const cards = out.querySelectorAll('.card');
 
-      cards.forEach(card => {
-        const qid = (card.querySelector('.qid')?.textContent || '').trim();
+      cards.forEach((card, index) => {
+        const item = currentQuestions[index];
+        const qid = item.id;
         const footer = card.querySelector('.meta');
         const answerKey = (footer?.dataset.answer || '').toUpperCase();
         const userAnswer = userAnswers[qid] || null;
-
-        // Visual feedback
         const options = card.querySelectorAll('.opt');
-        options.forEach(opt => {
-          const key = opt.dataset.key;
-          const picked = userAnswer === key;
-          if (answerKey && key === answerKey) opt.classList.add('correct');
-          if (picked && key !== answerKey) opt.classList.add('wrong');
-        });
+        
+        const standardAnswers = ['A', 'B', 'C', 'D'];
+        const isSpecialAnswer = !standardAnswers.includes(answerKey);
+
+        if (isSpecialAnswer) {
+            correct++; // NEW: Automatically correct, regardless of attempt
+            options.forEach(opt => opt.classList.add('correct'));
+        } else {
+            options.forEach(opt => {
+                const key = opt.dataset.key;
+                const picked = userAnswer === key;
+                if (answerKey && key === answerKey) opt.classList.add('correct');
+                if (picked && key !== answerKey) opt.classList.add('wrong');
+            });
+            if (userAnswer) {
+                if (userAnswer === answerKey) correct++; else incorrect++;
+            }
+        }
+        
         const metaLabel = card.querySelector('.meta span');
         if (metaLabel) metaLabel.classList.remove('hidden');
         const explainBtn = card.querySelector('.pill');
         if (explainBtn) explainBtn.classList.remove('hidden');
-
-        // Score calculation
-        if (userAnswer) {
-          if (userAnswer === answerKey) { correct++; } else { incorrect++; }
-        }
       });
 
       const totalQuestions = cards.length;
@@ -567,7 +634,6 @@
       const maxMarks = totalQuestions * 2;
       const scaledScore = maxMarks > 0 ? (marks / maxMarks) * 200 : 0;
 
-      // Update results card
       document.getElementById('correctCount').textContent = correct;
       document.getElementById('incorrectCount').textContent = incorrect;
       document.getElementById('unattemptedCount').textContent = unattempted;
@@ -584,29 +650,48 @@
       userAnswers = {};
       resultsCard.classList.add('hidden');
       submitBtn.disabled = false;
-      out.classList.remove('quiz-submitted'); // --- NEW ---
+      out.classList.remove('quiz-submitted');
       renderQuiz();
     }
 
     function quitQuiz() {
       out.classList.add('hidden');
+      quizInfoDiv.classList.add('hidden');
       document.getElementById('setup').classList.remove('hidden');
       submitBtn.classList.add('hidden');
       resetBtn.classList.add('hidden');
       quitBtn.classList.add('hidden');
       resultsCard.classList.add('hidden');
       submitBtn.disabled = false;
-      out.classList.remove('quiz-submitted'); // --- NEW ---
+      out.classList.remove('quiz-submitted');
+      currentQuestions = [];
     }
 
     startBtn.addEventListener('click', () => {
-      const mode = document.querySelector('input[name="viewMode"]:checked').value;
-      if (mode !== 'subject' && availableYears.size === 0 && Object.keys(ALL_DATA).length === 0) { alert('No questions available to start. Ensure JSON files are present on the server or provide a files.json manifest.'); return; }
+      currentQuestions = getFilteredQuestions();
+      if (currentQuestions.length === 0) {
+        noQuestionsModal.classList.remove('hidden');
+        return;
+      }
+
+      const selSubjects = getSelectedSubjects();
+      const selYears = getSelectedYears();
+      const selDifficulties = getSelectedDifficulties();
+      
+      const subjectText = selSubjects.length ? selSubjects.map(s => s.replace(/\.json$/, '')).join(', ') : 'All';
+      const yearText = selYears.length ? selYears.join(', ') : 'All';
+      const diffText = selDifficulties.length ? selDifficulties.map(d => DIFFICULTY_MAP[d] || d).join(', ') : 'All';
+      
+      quizInfoDiv.innerHTML = `<div class="card"><strong>Subjects:</strong> ${subjectText} &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Years:</strong> ${yearText} &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Difficulty:</strong> ${diffText}</div>`;
+      quizInfoDiv.classList.remove('hidden');
+
       document.getElementById('setup').classList.add('hidden');
       out.classList.remove('hidden');
       renderQuiz();
     });
 
+    modalCloseBtn.addEventListener('click', () => noQuestionsModal.classList.add('hidden'));
+    refreshBtn.addEventListener('click', autoLoadAll);
     submitBtn.addEventListener('click', submitQuiz);
     resetBtn.addEventListener('click', resetQuiz);
     quitBtn.addEventListener('click', quitQuiz);
